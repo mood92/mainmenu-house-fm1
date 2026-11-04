@@ -241,7 +241,7 @@ static const hy_patch_t HY_FACTORY[] = {
      * chorus, delay and reverb come with each sound (ui.c HOUSE_FX); M1 opens the filter, M2 is the sound's second
      * colour. Scales: see the top of this file. ---- */
     /* 27 the Juno stab: saw + pulse + sub saw into a 12 dB low-pass that snaps open and closes: the minor-7 stab */
-    {.osc = {HOSC(SUPER, 0, 0, 100, 38, 0), HOSC(PULSE, 0, 6, 80, 44, 0), HOSC(SAW, -12, 0, 55, 0, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 100, 38, 0), HOSC(PULSE, 0, 6, 80, 44, 0), HOSC(SAW, -12, 0, 100, 0, 0)},
      .drift = 40, .route = HR_SER,
      .flt = {HFLT(LP12, 64, 24, 30, 40, 30), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 72, 18, 60}, .env3 = {0, 64, 64, 64},
@@ -249,7 +249,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(M1, NONE, CUT, 40), HMOD(VEL, NONE, CUT, 10), HMOD(M2, NONE, SH2, 40)},
      .bend = 2, .level = 100, .name = "JUNO STAB"},
     /* 28 a deeper stab: the 24 dB filter lower, a saw an octave down, softer and rounder */
-    {.osc = {HOSC(SUPER, 0, 0, 105, 34, 0), HOSC(SAW, -12, 5, 80, 0, 0), HOSC(PULSE, 0, 0, 40, 30, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 105, 34, 0), HOSC(SUPER, -12, 0, 105, 30, 0), HOSC(PULSE, -12, 0, 60, 30, 0)},
      .drift = 30, .route = HR_SER,
      .flt = {HFLT(LP24, 54, 26, 30, 36, 24), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 76, 10, 64}, .env3 = {0, 64, 64, 64},
@@ -258,7 +258,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 100, .name = "DEEP STAB"},
     /* 29 dub techno chord: two saws apart and a sub pulse, the filter low and resonant, a slow wobble; it wants the
      * long delay and the reverb */
-    {.osc = {HOSC(SUPER, 0, 0, 105, 30, 0), HOSC(SAW, 0, 9, 80, 0, 0), HOSC(PULSE, -12, 0, 60, 50, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 105, 30, 0), HOSC(SUPER, -12, 0, 60, 26, 0), HOSC(PULSE, -12, 0, 60, 50, 0)},
      .drift = 50, .route = HR_SER,
      .flt = {HFLT(LP12, 48, 38, 38, 30, 20), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {6, 88, 0, 80}, .env3 = {0, 64, 64, 64},
@@ -282,7 +282,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(VEL, NONE, CUT, 14), HMOD(M1, NONE, CUT, 40), HMOD(M2, NONE, DRIVE, 40)},
      .bend = 2, .level = 104, .name = "WURLI HSE"},
     /* 32 the organ stab: a square, an octave and a fifth above it, bright; on and off at once */
-    {.osc = {HOSC(PULSE, 0, 0, 100, 64, 0), HOSC(SINE, 12, 0, 80, 0, 0), HOSC(SINE, 19, 0, 50, 0, 0)},
+    {.osc = {HOSC(PULSE, 0, 0, 100, 64, 0), HOSC(SINE, -12, 0, 40, 0, 0), HOSC(SINE, 12, 0, 70, 0, 0)},
      .drift = 20, .route = HR_SER,
      .flt = {HFLT(LP12, 96, 0, 0, 40, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 64, 64}, .env3 = {0, 64, 64, 64},
@@ -290,7 +290,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(M1, NONE, CUT, 40), HMOD(M2, NONE, LV3, 40)},
      .bend = 2, .level = 100, .name = "ORGAN STB"},
     /* 33 a warm pad: two saws and a saw an octave down, a slow filter that breathes */
-    {.osc = {HOSC(SUPER, 0, 0, 110, 50, 0), HOSC(SAW, 0, 7, 70, 0, 0), HOSC(SAW, -12, 0, 50, 0, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 110, 50, 0), HOSC(SUPER, -12, 0, 60, 40, 0), HOSC(SAW, -12, 0, 40, 0, 0)},
      .drift = 50, .route = HR_SER,
      .flt = {HFLT(LP12, 62, 18, 20, 24, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {90, 100, 80, 95}, .env3 = {0, 64, 64, 64},
@@ -306,7 +306,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(LFO2, MW, PITCH, 7), HMOD(AT, NONE, CUT, 10), HMOD(M1, NONE, CUT, 40), HMOD(M2, NONE, LV3, 40)},
      .bend = 2, .level = 104, .name = "PAN PIPE"},
     /* 35 a sine lead: a sine with a touch of feedback and a quiet octave above */
-    {.osc = {HOSC(SINE, 0, 0, 127, 18, 0), HOSC(SINE, 12, 0, 20, 0, 0), HNOOSC},
+    {.osc = {HOSC(SINE, 0, 0, 127, 18, 0), HOSC(SINE, -12, 0, 80, 0, 0), HOSC(TRI, 12, 0, 30, 0, 0)},
      .drift = 10, .route = HR_SER,
      .flt = {HFLT(OFF, 0, 0, 0, 0, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 64, 64}, .env3 = {0, 64, 64, 64},
@@ -322,7 +322,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(LFO2, NONE, SH1, 40), HMOD(LFO3, NONE, SH2, 40), HMOD(M1, NONE, CUT, 40), HMOD(LFO1, MW, PITCH, 6)},
      .bend = 2, .level = 100, .name = "PWM SQR"},
     /* 37 the mono synth lead: a saw and a square an octave down into the ladder, its own cutoff and resonance */
-    {.osc = {HOSC(SAW, 0, 0, 120, 0, 0), HOSC(PULSE, -12, 0, 70, 64, 0), HNOOSC},
+    {.osc = {HOSC(SAW, 0, 0, 120, 0, 0), HOSC(PULSE, -12, 0, 90, 64, 0), HOSC(SAW, -12, 6, 70, 0, 0)},
      .drift = 20, .drive = 20, .route = HR_SER,
      .flt = {HFLT(MOOG, 70, 52, 30, 48, 20), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {2, 76, 34, 56}, .env3 = {0, 64, 64, 64},
@@ -338,7 +338,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(ENV3, VEL, SH2, 50), HMOD(LFO2, NONE, AMP, -8), HMOD(M1, NONE, SH2, 40)},
      .bend = 2, .level = 104, .name = "VIBES"},
     /* 39 a deep sub: a sine with a little feedback, an octave above it very quiet, a touch of drive */
-    {.osc = {HOSC(SINE, 0, 0, 127, 12, HOF_RESET), HOSC(SINE, 12, 0, 18, 0, HOF_RESET), HNOOSC},
+    {.osc = {HOSC(SINE, 0, 0, 127, 12, HOF_RESET), HOSC(SINE, 12, 0, 45, 0, HOF_RESET), HNOOSC},
      .drift = 0, .drive = 36, .route = HR_SER,
      .flt = {HFLT(LP12, 64, 0, 0, 30, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 64, 64}, .env3 = {0, 64, 64, 64},
