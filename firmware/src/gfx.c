@@ -33,7 +33,7 @@ static uint32_t cv_w, cv_h;
 static int32_t cv_oy;            /* y offset for graph drawing */
 
 #define RGB(r, g, b) ((uint16_t)((((r) >> 3) << 11) | (((g) >> 2) << 5) | ((b) >> 3)))
-#define C_BLACK 0x0000u
+#define C_BLACK RGB(36, 39, 47)      /* (house: the blueprint's charcoal, not black: every background and the ink on lime) */
 #define C_WHITE 0xFFFFu              /* accent only: what is being touched / where we are */
 /* The screen is five steps of one colour, darkest to brightest, plus white.
  * Palettes are picked in the HOME-hold menu (COLOR). */
@@ -42,6 +42,7 @@ typedef struct {
     uint16_t c[5];
 } palette_t;
 static const palette_t PALETTES[] = {
+    {"LIME", {RGB(58, 66, 44), RGB(84, 98, 42), RGB(128, 150, 46), RGB(176, 208, 52), RGB(216, 250, 60)}},   /* (house: first = the default) */
     {"GREEN", {RGB(0, 40, 12), RGB(0, 84, 30), RGB(16, 140, 54), RGB(56, 200, 92), RGB(120, 255, 146)}},
     {"AMBER", {RGB(60, 26, 0), RGB(110, 50, 0), RGB(170, 82, 0), RGB(225, 120, 8), RGB(255, 166, 40)}},
     {"CYAN", {RGB(0, 30, 50), RGB(0, 62, 96), RGB(16, 112, 160), RGB(56, 172, 222), RGB(140, 222, 255)}},
