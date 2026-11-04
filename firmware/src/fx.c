@@ -208,6 +208,7 @@ static int32_t usb_out[2u * CTL];
  * picture does not follow the volume knob, even at 0 (2.4). The same soft knee as the output, no limiter state */
 static int16_t vis_tap[2u * CTL];
 static struct { int32_t dc[2], dce[2], lc[4], lce[4]; } uo;
+static int32_t bodyu_l, bodyu_r;                        /* (the low shelf of master_pre, USB state) */
 static void master_pre_usb(int32_t *l, int32_t *r)      /* (USB AUDIO = FULL: its own state) */
 {
     *l = dc_block(*l, &uo.dc[0], &uo.dce[0]);
@@ -218,9 +219,14 @@ static void master_pre_usb(int32_t *l, int32_t *r)      /* (USB AUDIO = FULL: it
         *r = lowcut1(*r, &uo.lc[2], &uo.lce[2]);
         *r = lowcut1(*r, &uo.lc[3], &uo.lce[3]);
     }
+    bodyu_l += (*l - bodyu_l) >> 5;
+    bodyu_r += (*r - bodyu_r) >> 5;
+    *l += (bodyu_l * 5) >> 3;
+    *r += (bodyu_r * 5) >> 3;
 }
 
 /* the output stage before the limiter: the DC blocker, the low cut */
+static int32_t body_l, body_r;       /* MAIN MENU HOUSE: a low shelf (~+4 dB below ~220 Hz): the small speaker and the DAW both want body */
 static inline void master_pre(int32_t *l, int32_t *r)
 {
     *l = dc_block(*l, &dc_l, &dce_l);
@@ -231,6 +237,10 @@ static inline void master_pre(int32_t *l, int32_t *r)
         *r = lowcut1(*r, &lc_r1, &lce[2]);
         *r = lowcut1(*r, &lc_r2, &lce[3]);
     }
+    body_l += (*l - body_l) >> 5;
+    body_r += (*r - body_r) >> 5;
+    *l += (body_l * 5) >> 3;
+    *r += (body_r * 5) >> 3;
 }
 
 
