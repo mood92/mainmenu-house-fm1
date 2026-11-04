@@ -644,21 +644,23 @@ static const char *const BANK_KIND[] = {"BASS", "KEYS", "ORGN", "PAD", "LEAD", "
 #endif
 static const struct { uint8_t kind, e; const char *name; } BANK[] = {
     /* MAIN MENU HOUSE: 20 chords (MIDI program 0-19), 20 leads (20-39), 20 basses (40-59) */
-    {BK_ORGAN, 7, "HOUSE ORGN"}, {BK_ORGAN, 7, "FULL ORGAN"}, {BK_ORGAN, 1, "PERC ORGAN"}, {BK_ORGAN, 7, "DIRTY B3"},
-    {BK_KEYS, 1, "M1 PIANO"}, {BK_KEYS, 1, "DX RHODES"}, {BK_KEYS, 1, "RHODES"}, {BK_KEYS, 1, "WURLI"},
-    {BK_KEYS, 1, "SUITCASE"}, {BK_STAB, 6, "DUB CHORD"}, {BK_STAB, 6, "MIN7 STAB"}, {BK_STAB, 6, "MIN STAB"},
-    {BK_STAB, 6, "MAJ STAB"}, {BK_STAB, 6, "SUS STAB"}, {BK_STAB, 6, "RAVE STAB"}, {BK_STAB, ENGI_MACRO, "HOUSE CHRD"},
+    {BK_ORGAN, ENGI_HYBRID, "ORGAN STB"}, {BK_ORGAN, 7, "HOUSE ORGN"}, {BK_ORGAN, 7, "FULL ORGAN"},
+    {BK_ORGAN, 7, "DIRTY B3"}, {BK_KEYS, 1, "M1 PIANO"}, {BK_KEYS, ENGI_HYBRID, "SOFT EP"}, {BK_KEYS, 1, "DX RHODES"},
+    {BK_KEYS, ENGI_HYBRID, "WURLI HSE"}, {BK_KEYS, 1, "SUITCASE"}, {BK_STAB, ENGI_HYBRID, "DUB TECH"},
+    {BK_STAB, ENGI_HYBRID, "JUNO STAB"}, {BK_STAB, ENGI_HYBRID, "DEEP STAB"}, {BK_STAB, 6, "MAJ STAB"},
+    {BK_STAB, 6, "SUS STAB"}, {BK_STAB, 6, "RAVE STAB"}, {BK_STAB, ENGI_MACRO, "HOUSE CHRD"},
     {BK_STAB, ENGI_MACRO, "CHORD STAB"}, {BK_PAD, ENGI_JUNO, "JUNO 106 PAD"}, {BK_PAD, ENGI_STRINGS, "SOLINA"},
-    {BK_STAB, 6, "80S POLY"},
-    {BK_LEAD, 0, "PAN FLUTE"}, {BK_LEAD, 0, "MINI LEAD"}, {BK_LEAD, 0, "PROPH LEAD"}, {BK_LEAD, 0, "PWM LEAD"},
-    {BK_LEAD, 0, "WAH LEAD"}, {BK_LEAD, 0, "FAT LEAD"}, {BK_LEAD, ENGI_HYBRID, "MOOG LEAD"},
-    {BK_LEAD, ENGI_HYBRID, "SOFT SYNC"}, {BK_LEAD, ENGI_HYBRID, "SYNC LEAD"}, {BK_LEAD, ENGI_JUNO, "SAW LEAD 106"},
-    {BK_LEAD, ENGI_JUNO, "SYNTHWAVE LD"}, {BK_LEAD, 1, "FM LEAD"}, {BK_LEAD, 2, "CZ LEAD"},
-    {BK_LEAD, ENGI_ACID, "ACID LEAD"}, {BK_LEAD, 6, "SQR LEAD"}, {BK_LEAD, 5, "AAH LEAD"}, {BK_PLUCK, 1, "SYN VIBES"},
-    {BK_PLUCK, 1, "MARIMBA"}, {BK_PLUCK, 1, "KALIMBA"}, {BK_PLUCK, 0, "SQR PLUCK"},
-    {BK_BASS, 0, "TAURUS"}, {BK_BASS, 0, "MONO BASS"}, {BK_BASS, 0, "SAW BASS"}, {BK_BASS, 0, "SUB BASS"},
-    {BK_BASS, 0, "MINI BASS"}, {BK_BASS, ENGI_HYBRID, "MOOG BASS"}, {BK_BASS, 0, "DYN BASS"}, {BK_BASS, 1, "FM BASS"},
-    {BK_BASS, 1, "DX BASS"}, {BK_BASS, 6, "FAT BASS"}, {BK_BASS, 0, "ACID 303"}, {BK_BASS, ENGI_ACID, "DEEP 303"},
+    {BK_PAD, ENGI_HYBRID, "WARM PAD"},
+    {BK_LEAD, ENGI_HYBRID, "PAN PIPE"}, {BK_LEAD, ENGI_HYBRID, "SH LEAD"}, {BK_LEAD, 0, "PROPH LEAD"},
+    {BK_LEAD, ENGI_HYBRID, "PWM SQR"}, {BK_LEAD, ENGI_HYBRID, "SINE LEAD"}, {BK_LEAD, 0, "FAT LEAD"},
+    {BK_LEAD, ENGI_HYBRID, "MOOG LEAD"}, {BK_LEAD, ENGI_HYBRID, "SOFT SYNC"}, {BK_LEAD, ENGI_HYBRID, "SYNC LEAD"},
+    {BK_LEAD, ENGI_JUNO, "SAW LEAD 106"}, {BK_LEAD, ENGI_JUNO, "SYNTHWAVE LD"}, {BK_LEAD, 1, "FM LEAD"},
+    {BK_LEAD, 2, "CZ LEAD"}, {BK_LEAD, ENGI_ACID, "ACID LEAD"}, {BK_LEAD, 6, "SQR LEAD"}, {BK_LEAD, 5, "AAH LEAD"},
+    {BK_PLUCK, ENGI_HYBRID, "VIBES"}, {BK_PLUCK, 1, "MARIMBA"}, {BK_PLUCK, 1, "KALIMBA"}, {BK_PLUCK, 0, "SQR PLUCK"},
+    {BK_BASS, 0, "TAURUS"}, {BK_BASS, 0, "MONO BASS"}, {BK_BASS, ENGI_HYBRID, "ROLL BASS"},
+    {BK_BASS, ENGI_HYBRID, "DEEP SUB"}, {BK_BASS, 0, "MINI BASS"}, {BK_BASS, ENGI_HYBRID, "HSE BASS"},
+    {BK_BASS, 0, "DYN BASS"}, {BK_BASS, ENGI_HYBRID, "TX BASS"}, {BK_BASS, ENGI_HYBRID, "DUB BASS"},
+    {BK_BASS, 6, "FAT BASS"}, {BK_BASS, 0, "ACID 303"}, {BK_BASS, ENGI_ACID, "DEEP 303"},
     {BK_BASS, ENGI_ACID, "SOFT 303"}, {BK_BASS, ENGI_ACID, "LOW 303"}, {BK_BASS, ENGI_ACID, "ACID HOUSE"},
     {BK_BASS, ENGI_JUNO, "SUB BASS 106"}, {BK_BASS, ENGI_JUNO, "JUNO BASS"}, {BK_BASS, ENGI_FM6, "ROUND BASS"},
     {BK_BASS, 0, "PLUGG BASS"}, {BK_BASS, 0, "FUNK BASS"},
@@ -819,7 +821,7 @@ static const struct { uint8_t it, mix, dly, rev; } HOUSE_FX[] = {
     HF(0, 0, 80, 64),                                                          /* DUB CHORD: the long tail */
     HF(10, 70, 40, 36), HF(10, 70, 36, 34), HF(10, 70, 36, 34), HF(10, 70, 36, 34),   /* MIN7 .. SUS STAB */
     HF(0, 0, 30, 30), HF(10, 60, 30, 34), HF(10, 60, 30, 34),                  /* RAVE STAB, HOUSE CHRD, CHORD STAB */
-    HF(11, 80, 0, 40), HF(0, 0, 0, 40), HF(10, 80, 20, 30),                    /* JUNO 106 PAD, SOLINA, 80S POLY */
+    HF(11, 80, 0, 40), HF(0, 0, 0, 40), HF(11, 80, 0, 40),                   /* JUNO 106 PAD, SOLINA, WARM PAD */
     /* leads */
     HF(0, 0, 30, 34), HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(9, 50, 30, 22), HF(0, 0, 36, 22), HF(0, 0, 36, 22),
     HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(10, 60, 36, 24), HF(10, 60, 36, 24), HF(0, 0, 30, 26),
@@ -830,6 +832,7 @@ static const struct { uint8_t it, mix, dly, rev; } HOUSE_FX[] = {
     HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0),
     HF(0, 0, 24, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0),
 };
+static const int8_t HOUSE_TRIM[] = {3,4,4,2,4,3,4,4,3,4,4,4,4,4,4,4,4,5,4,5,4,9,4,5,1,4,4,7,8,4,4,5,6,3,4,5,6,4,4,4,-1,0,4,-5,1,5,0,-1,-5,1,4,-1,3,-1,1,-6,-3,-4,-5,-3};   /* loudness match, 1/2 dB */
 _Static_assert(sizeof HOUSE_FX / sizeof HOUSE_FX[0] == NBANK, "a HOUSE_FX entry per BANK sound");
 UI_SMALL static void house_apply(uint32_t bi, track_t *t)       /* the sound BANK[bi] was just loaded into t */
 {
@@ -839,6 +842,7 @@ UI_SMALL static void house_apply(uint32_t bi, track_t *t)       /* the sound BAN
     t->p[P_ITYPE] = HOUSE_FX[bi].it;
     t->p[P_IMIX] = HOUSE_FX[bi].mix;
 #endif
+    t->p[P_ED_FX] = HOUSE_TRIM[bi];
     t->p[P_DLY] = HOUSE_FX[bi].dly;
     t->p[P_REV] = HOUSE_FX[bi].rev;
 }
