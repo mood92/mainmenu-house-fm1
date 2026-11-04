@@ -1,0 +1,54 @@
+# Build the firmware package on GitHub (the JieLi compiler runs on Linux x86-64 only).
+# Run it by hand: Actions tab > build > Run workflow. The package is in the run's "Artifacts" box.
+# Same recipe as the KARMA fork's build.yml (pattern from Dinghy's release workflow, zvenson/dinghy).
+# GPL-3.0-only, as the rest of the repo.
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['firmware/**', 'tools/**', 'assets/**', 'build.sh', '.github/workflows/build.yml']
+
+jobs:
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Python packages
+        run: python3 -m pip install Pillow
+
+      - name: JieLi toolchain (pkgman.jieliapp.com)
+        run: sh tools/get_toolchain.sh
+
+      - name: JieLi AC79 SDK (three files of it go into the package)
+        run: |
+          for i in 1 2 3; do                     # (gitee.com drops a clone now and then: try again)
+            git clone --depth 1 --branch AC79NN_SDK_V1.2.1_2023-12-13 \
+                https://gitee.com/Jieli-Tech/fw-AC79_AIoT_SDK.git ~/fw-AC79_AIoT_SDK && break
+            rm -rf ~/fw-AC79_AIoT_SDK
+            sleep 20
+          done
+          test -d ~/fw-AC79_AIoT_SDK
+
+      - name: Build
+        run: sh build.sh
+
+      - name: Package files
+        run: ls -l build/*.fwsc build/*.bin
+
+      - name: Name the package
+        run: |
+          mkdir -p out
+          cp build/felucca.fwsc out/MainMenu-House.fwsc
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MainMenu-House
+          path: out/MainMenu-House.fwsc
+          if-no-files-found: error
