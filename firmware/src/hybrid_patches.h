@@ -140,7 +140,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 120, .name = "METAL"},
     /* 15 fold bass: a sine folded by ENV3 and the velocity, a 24 dB filter */
     {.osc = {HOSC(FOLD, 0, 0, 127, 20, HOF_RESET), HOSC(SINE, -12, 0, 70, 0, HOF_RESET), HNOOSC},
-     .drift = 0, .drive = 20, .route = HR_SER,
+     .drift = 0, .drive = 38, .route = HR_SER,
      .flt = {HFLT(LP24, 70, 30, 20, 30, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 70, 30, 50}, .env3 = {0, 74, 20, 50},
      .lfo = {HLFO(SINE, 40, 0, 0), HLFO(SINE, 40, 0, 0)},
@@ -241,7 +241,7 @@ static const hy_patch_t HY_FACTORY[] = {
      * chorus, delay and reverb come with each sound (ui.c HOUSE_FX); M1 opens the filter, M2 is the sound's second
      * colour. Scales: see the top of this file. ---- */
     /* 27 the Juno stab: saw + pulse + sub saw into a 12 dB low-pass that snaps open and closes: the minor-7 stab */
-    {.osc = {HOSC(SAW, 0, -6, 100, 0, 0), HOSC(PULSE, 0, 6, 90, 44, 0), HOSC(SAW, -12, 0, 55, 0, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 100, 38, 0), HOSC(PULSE, 0, 6, 80, 44, 0), HOSC(SAW, -12, 0, 55, 0, 0)},
      .drift = 40, .route = HR_SER,
      .flt = {HFLT(LP12, 64, 24, 30, 40, 30), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 72, 18, 60}, .env3 = {0, 64, 64, 64},
@@ -249,7 +249,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(M1, NONE, CUT, 40), HMOD(VEL, NONE, CUT, 10), HMOD(M2, NONE, SH2, 40)},
      .bend = 2, .level = 100, .name = "JUNO STAB"},
     /* 28 a deeper stab: the 24 dB filter lower, a saw an octave down, softer and rounder */
-    {.osc = {HOSC(SAW, 0, -5, 110, 0, 0), HOSC(SAW, -12, 5, 80, 0, 0), HOSC(PULSE, 0, 0, 40, 30, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 105, 34, 0), HOSC(SAW, -12, 5, 80, 0, 0), HOSC(PULSE, 0, 0, 40, 30, 0)},
      .drift = 30, .route = HR_SER,
      .flt = {HFLT(LP24, 54, 26, 30, 36, 24), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 76, 10, 64}, .env3 = {0, 64, 64, 64},
@@ -258,7 +258,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 100, .name = "DEEP STAB"},
     /* 29 dub techno chord: two saws apart and a sub pulse, the filter low and resonant, a slow wobble; it wants the
      * long delay and the reverb */
-    {.osc = {HOSC(SAW, 0, -8, 100, 0, 0), HOSC(SAW, 0, 8, 100, 0, 0), HOSC(PULSE, -12, 0, 60, 50, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 105, 30, 0), HOSC(SAW, 0, 9, 80, 0, 0), HOSC(PULSE, -12, 0, 60, 50, 0)},
      .drift = 50, .route = HR_SER,
      .flt = {HFLT(LP12, 48, 38, 38, 30, 20), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {6, 88, 0, 80}, .env3 = {0, 64, 64, 64},
@@ -290,7 +290,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .mod = {HMOD(M1, NONE, CUT, 40), HMOD(M2, NONE, LV3, 40)},
      .bend = 2, .level = 100, .name = "ORGAN STB"},
     /* 33 a warm pad: two saws and a saw an octave down, a slow filter that breathes */
-    {.osc = {HOSC(SAW, 0, -6, 100, 0, 0), HOSC(SAW, 0, 6, 100, 0, 0), HOSC(SAW, -12, 0, 50, 0, 0)},
+    {.osc = {HOSC(SUPER, 0, 0, 110, 50, 0), HOSC(SAW, 0, 7, 70, 0, 0), HOSC(SAW, -12, 0, 50, 0, 0)},
      .drift = 50, .route = HR_SER,
      .flt = {HFLT(LP12, 62, 18, 20, 24, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {90, 100, 80, 95}, .env3 = {0, 64, 64, 64},
@@ -339,7 +339,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 104, .name = "VIBES"},
     /* 39 a deep sub: a sine with a little feedback, an octave above it very quiet, a touch of drive */
     {.osc = {HOSC(SINE, 0, 0, 127, 12, HOF_RESET), HOSC(SINE, 12, 0, 18, 0, HOF_RESET), HNOOSC},
-     .drift = 0, .drive = 14, .route = HR_SER,
+     .drift = 0, .drive = 36, .route = HR_SER,
      .flt = {HFLT(LP12, 64, 0, 0, 30, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 64, 64}, .env3 = {0, 64, 64, 64},
      .lfo = {HLFO(SINE, 40, 0, 0), HLFO(SINE, 40, 0, 0)},
@@ -347,7 +347,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 104, .name = "DEEP SUB"},
     /* 40 the house bass: two saws an octave apart and a square under them into the ladder, a snappy filter */
     {.osc = {HOSC(SAW, 0, 0, 105, 0, HOF_RESET), HOSC(SAW, -12, 4, 90, 0, HOF_RESET), HOSC(PULSE, -12, 0, 70, 64, HOF_RESET)},
-     .drift = 20, .drive = 34, .route = HR_SER,
+     .drift = 20, .drive = 46, .route = HR_SER,
      .flt = {HFLT(MOOG, 40, 46, 50, 32, 30), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 22, 50}, .env3 = {0, 64, 64, 64},
      .lfo = {HLFO(SINE, 60, 0, 0), HLFO(SINE, 60, 0, 0)},
@@ -371,7 +371,7 @@ static const hy_patch_t HY_FACTORY[] = {
      .bend = 2, .level = 100, .name = "ROLL BASS"},
     /* 43 a dub bass: a round sine with a triangle an octave down, a little warmth */
     {.osc = {HOSC(SINE, 0, 0, 120, 6, HOF_RESET), HOSC(TRI, -12, 0, 60, 0, HOF_RESET), HNOOSC},
-     .drift = 0, .drive = 20, .route = HR_SER,
+     .drift = 0, .drive = 38, .route = HR_SER,
      .flt = {HFLT(LP12, 58, 20, 0, 30, 0), HFLT(OFF, 0, 0, 0, 0, 0)},
      .env2 = {0, 64, 64, 64}, .env3 = {0, 64, 64, 64},
      .lfo = {HLFO(SINE, 40, 0, 0), HLFO(SINE, 40, 0, 0)},

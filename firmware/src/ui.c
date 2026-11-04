@@ -816,22 +816,24 @@ UI_SMALL static const char *preset_kind(uint32_t n)
 #define HF(it, mix, dly, rev) {it, mix, dly, rev}
 static const struct { uint8_t it, mix, dly, rev; } HOUSE_FX[] = {
     /* chords: organs, keys, stabs, pads */
-    HF(0, 0, 0, 26), HF(0, 0, 0, 22), HF(0, 0, 0, 22), HF(0, 0, 0, 20),       /* HOUSE ORGN .. DIRTY B3 */
-    HF(9, 50, 0, 30), HF(9, 60, 0, 28), HF(9, 60, 0, 28), HF(9, 60, 0, 24), HF(9, 60, 0, 24),   /* M1 PIANO .. SUITCASE */
-    HF(0, 0, 80, 64),                                                          /* DUB CHORD: the long tail */
-    HF(10, 70, 40, 36), HF(10, 70, 36, 34), HF(10, 70, 36, 34), HF(10, 70, 36, 34),   /* MIN7 .. SUS STAB */
-    HF(0, 0, 30, 30), HF(10, 60, 30, 34), HF(10, 60, 30, 34),                  /* RAVE STAB, HOUSE CHRD, CHORD STAB */
-    HF(11, 80, 0, 40), HF(0, 0, 0, 40), HF(11, 80, 0, 40),                   /* JUNO 106 PAD, SOLINA, WARM PAD */
-    /* leads */
-    HF(0, 0, 30, 34), HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(9, 50, 30, 22), HF(0, 0, 36, 22), HF(0, 0, 36, 22),
-    HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(0, 0, 36, 22), HF(10, 60, 36, 24), HF(10, 60, 36, 24), HF(0, 0, 30, 26),
-    HF(0, 0, 30, 26), HF(0, 0, 30, 16), HF(0, 0, 36, 22), HF(0, 0, 20, 40), HF(0, 0, 40, 34), HF(0, 0, 36, 30),
-    HF(0, 0, 40, 34), HF(0, 0, 40, 30),
-    /* basses: dry and tight (the 303s a touch of echo) */
+    HF(9, 40, 0, 34), HF(9, 40, 0, 30), HF(9, 40, 0, 30), HF(9, 36, 0, 28),   /* ORGAN STB .. DIRTY B3 */
+    HF(9, 70, 0, 40), HF(9, 80, 0, 38), HF(9, 80, 0, 38), HF(9, 80, 0, 34), HF(9, 80, 0, 34),   /* M1 PIANO .. SUITCASE */
+    HF(11, 70, 90, 76),                                                        /* DUB CHORD: the long tail */
+    HF(10, 90, 52, 46), HF(10, 90, 46, 44), HF(10, 90, 46, 44), HF(10, 90, 46, 44),   /* JUNO STAB .. SUS STAB */
+    HF(10, 80, 40, 40), HF(10, 90, 40, 44), HF(10, 90, 40, 44),                /* RAVE STAB, HOUSE CHRD, CHORD STAB */
+    HF(11, 100, 0, 56), HF(11, 70, 0, 52), HF(11, 100, 0, 56),               /* JUNO 106 PAD, SOLINA, WARM PAD */
+    /* leads: Juno chorus, a dotted echo, a room */
+    HF(10, 60, 40, 44), HF(10, 70, 46, 30), HF(10, 70, 46, 30), HF(10, 80, 40, 30), HF(10, 60, 44, 30), HF(10, 80, 46, 30),
+    HF(10, 70, 46, 30), HF(10, 70, 46, 30), HF(10, 70, 46, 30), HF(11, 90, 46, 32), HF(11, 90, 46, 32), HF(10, 70, 40, 34),
+    HF(10, 70, 40, 34), HF(0, 0, 40, 22), HF(10, 70, 46, 30), HF(10, 60, 30, 48), HF(10, 70, 50, 44), HF(10, 70, 46, 40),
+    HF(10, 70, 50, 44), HF(10, 70, 50, 40),
+    /* basses: tight; a touch of echo on the 303s */
     HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0),
-    HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0), HF(0, 0, 24, 0),
-    HF(0, 0, 24, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0),
+    HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 30, 0), HF(0, 0, 30, 0), HF(0, 0, 30, 0), HF(0, 0, 30, 0),
+    HF(0, 0, 30, 6), HF(0, 0, 0, 0), HF(9, 30, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0), HF(0, 0, 0, 0),
 };
+/* the basses' saturation (BANK 40..59): harmonics so a sub still speaks on a small speaker */
+static const uint8_t HOUSE_BDIST[20] = {0,0,12,34,0,20,0,10,34,0,0,0,0,0,0,34,10,12,34,0};
 static const int8_t HOUSE_TRIM[] = {3,4,4,2,4,3,4,4,3,4,4,4,4,4,4,4,4,5,4,5,4,9,4,5,1,4,4,7,8,4,4,5,6,3,4,5,6,4,4,4,-1,0,4,-5,1,5,0,-1,-5,1,4,-1,3,-1,1,-6,-3,-4,-5,-3};   /* loudness match, 1/2 dB */
 _Static_assert(sizeof HOUSE_FX / sizeof HOUSE_FX[0] == NBANK, "a HOUSE_FX entry per BANK sound");
 UI_SMALL static void house_apply(uint32_t bi, track_t *t)       /* the sound BANK[bi] was just loaded into t */
@@ -843,6 +845,8 @@ UI_SMALL static void house_apply(uint32_t bi, track_t *t)       /* the sound BAN
     t->p[P_IMIX] = HOUSE_FX[bi].mix;
 #endif
     t->p[P_ED_FX] = HOUSE_TRIM[bi];
+    if (bi >= 40)
+        t->p[P_DIST] = HOUSE_BDIST[bi - 40] > t->p[P_DIST] ? HOUSE_BDIST[bi - 40] : t->p[P_DIST];
     t->p[P_DLY] = HOUSE_FX[bi].dly;
     t->p[P_REV] = HOUSE_FX[bi].rev;
 }
